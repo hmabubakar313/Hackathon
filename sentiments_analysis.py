@@ -1,4 +1,5 @@
 import tweepy
+import time
 from textblob import TextBlob
 
 # Step 1 - Authenticate
@@ -22,16 +23,29 @@ public_tweets = api.search('Trump')
 #and label each one as either 'positive' or 'negative', depending on the sentiment 
 #You can decide the sentiment polarity      threshold yourself
 
+arr1 = []
+while(True):
+    for tweet in public_tweets:
+            analysis = TextBlob(tweet.text)    
+            print(analysis.sentiment)
+            if (analysis.sentiment.subjectivity>0):
+                arr1.append(analysis.sentiment.polarity)
+            print("polarity is ====")
+            print(analysis.sentiment.polarity)
+            length_arr1=len(arr1)    
+            total = sum(arr1)
+            print (arr1)
+    if (analysis.sentiment.polarity>0   and  analysis.sentiment.subjectivity>0):
+        print("positive")
+    else:
+            print("negative")
 
-for tweet in public_tweets:
-    print(tweet.text)
-    
-    #Step 4 Perform Sentiment Analysis on Tweets
-    print("==========================================")
-    analysis = TextBlob(tweet.text)
-    print(analysis.sentiment)
-    print("polarity is =")
-    print((analysis.sentiment.polarity))
-    print("Subjectivity is =")
-    print(analysis.sentiment.subjectivity)
-    
+    time.sleep(60)        
+
+
+
+
+
+
+
+
