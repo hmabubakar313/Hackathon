@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Client
+from .models import temp_Client
 # Create your views here.
 
 def home(request):
@@ -11,4 +11,4 @@ def home(request):
 	client2.First_name = "Ahmed"
 	client2.Last_name = "Farhan"
 	clients = [client1, client2]
-	return render(request,'home.html', {'clients':clients})
+	return render(request,'index.html', {'clients':clients})
