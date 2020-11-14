@@ -27,6 +27,11 @@ for tweet in public_tweets:
     print(tweet.text)
     
     #Step 4 Perform Sentiment Analysis on Tweets
+    print("==========================================")
     analysis = TextBlob(tweet.text)
     print(analysis.sentiment)
-    print( public_tweets)
+    print("polarity is =")
+    print((analysis.sentiment.polarity))
+    print("Subjectivity is =")
+    print(analysis.sentiment.subjectivity)
+    
